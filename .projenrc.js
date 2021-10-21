@@ -21,23 +21,26 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-cognito',
   ],
-  // python: {
-  //   distName: PROJECT_NAME,
-  //   module: PROJECT_NAME,
-  // },
-  // publishToMaven: {
-  //   javaPackage: 'com.github.jeromevdl.awscdk.s3uploadsignedurl',
-  //   mavenGroupId: 'com.github.jeromevdl.awscdk',
-  //   mavenArtifactId: PROJECT_NAME,
-  // },
+  python: {
+    distName: PROJECT_NAME,
+    module: PROJECT_NAME,
+  },
+  publishToMaven: {
+    javaPackage: 'com.github.jeromevdl.awscdk.s3uploadsignedurl',
+    mavenGroupId: 'com.github.jeromevdl.awscdk',
+    mavenArtifactId: PROJECT_NAME,
+  },
   // cdkTestDependencies: undefined,  /* AWS CDK modules required for testing. */
-  deps: [
-
-  ],
+  // deps: [],
   devDeps: [
     'ts-node',
     '@jest/globals',
-  ], /* Build dependencies for this module. */
+  ],
+  gitignore: [
+    'yarn.lock',
+    '.DS_Store',
+    'cdk.out',
+  ],
   // release: undefined,              /* Add release management to this project. */
   dependabot: false,
   cdkDependenciesAsDeps: false,

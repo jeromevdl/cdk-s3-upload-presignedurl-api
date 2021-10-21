@@ -29,6 +29,9 @@ jspm_packages/
 *.tgz
 .yarn-integrity
 .cache
+yarn.lock
+.DS_Store
+cdk.out
 !/.projenrc.js
 /test-reports/
 junit.xml
@@ -49,7 +52,3 @@ tsconfig.json
 !/API.md
 !/.github/workflows/release.yml
 !/.github/workflows/upgrade-main.yml
-.DS_Store
-.vscode/
-cdk.out/
-yarn.lock
