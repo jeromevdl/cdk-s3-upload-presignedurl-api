@@ -36,6 +36,7 @@
   "devDependencies": {
     "@aws-cdk/assert": "1.125.0",
     "@aws-cdk/aws-apigateway": "1.125.0",
+    "@aws-cdk/aws-cognito": "1.125.0",
     "@aws-cdk/aws-lambda": "1.125.0",
     "@aws-cdk/aws-lambda-nodejs": "1.125.0",
     "@aws-cdk/aws-logs": "1.125.0",
@@ -65,6 +66,7 @@
   },
   "peerDependencies": {
     "@aws-cdk/aws-apigateway": "1.125.0",
+    "@aws-cdk/aws-cognito": "1.125.0",
     "@aws-cdk/aws-lambda": "1.125.0",
     "@aws-cdk/aws-lambda-nodejs": "1.125.0",
     "@aws-cdk/aws-logs": "1.125.0",

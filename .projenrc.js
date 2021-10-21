@@ -19,6 +19,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-apigateway',
     '@aws-cdk/aws-lambda-nodejs',
     '@aws-cdk/aws-logs',
+    '@aws-cdk/aws-cognito',
   ],
   // python: {
   //   distName: PROJECT_NAME,
