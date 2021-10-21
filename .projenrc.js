@@ -1,6 +1,6 @@
 const { AwsCdkConstructLibrary } = require('projen');
 
-const PROJECT_NAME = 'cdk-s3-upload-signed-url';
+const PROJECT_NAME = 'cdk-s3-upload-presignedurl-api';
 
 const project = new AwsCdkConstructLibrary({
   author: 'Jerome Van Der Linden',
@@ -11,7 +11,7 @@ const project = new AwsCdkConstructLibrary({
   name: PROJECT_NAME,
   packageName: PROJECT_NAME,
   description: 'API to get an S3 presigned url for file uploads',
-  repositoryUrl: 'https://github.com/jeromevdl/cdk-s3-upload-signed-url.git',
+  repositoryUrl: `https://github.com/jeromevdl/${PROJECT_NAME}.git`,
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-s3',
@@ -26,11 +26,11 @@ const project = new AwsCdkConstructLibrary({
     module: PROJECT_NAME,
   },
   publishToMaven: {
-    javaPackage: 'com.github.jeromevdl.awscdk.s3uploadsignedurl',
+    javaPackage: 'com.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
     mavenGroupId: 'com.github.jeromevdl.awscdk',
     mavenArtifactId: PROJECT_NAME,
   },
-  // cdkTestDependencies: undefined,  /* AWS CDK modules required for testing. */
+  // cdkTestDependencies: []],
   // deps: [],
   devDeps: [
     'ts-node',
@@ -45,4 +45,7 @@ const project = new AwsCdkConstructLibrary({
   dependabot: false,
   cdkDependenciesAsDeps: false,
 });
+project.addPackageIgnore('.DS_Store');
+project.addPackageIgnore('cdk.out');
+project.addPackageIgnore('yarn.lock');
 project.synth();

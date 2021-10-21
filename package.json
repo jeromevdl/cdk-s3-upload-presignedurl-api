@@ -1,9 +1,9 @@
 {
-  "name": "cdk-s3-upload-signed-url",
+  "name": "cdk-s3-upload-presignedurl-api",
   "description": "API to get an S3 presigned url for file uploads",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeromevdl/cdk-s3-upload-signed-url.git"
+    "url": "https://github.com/jeromevdl/cdk-s3-upload-presignedurl-api.git"
   },
   "scripts": {
     "clobber": "npx projen clobber",
@@ -129,15 +129,15 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "com.github.jeromevdl.awscdk.s3uploadsignedurl",
+        "package": "com.github.jeromevdl.awscdk.s3uploadpresignedurlapi",
         "maven": {
           "groupId": "com.github.jeromevdl.awscdk",
-          "artifactId": "cdk-s3-upload-signed-url"
+          "artifactId": "cdk-s3-upload-presignedurl-api"
         }
       },
       "python": {
-        "distName": "cdk-s3-upload-signed-url",
-        "module": "cdk-s3-upload-signed-url"
+        "distName": "cdk-s3-upload-presignedurl-api",
+        "module": "cdk-s3-upload-presignedurl-api"
       }
     },
     "tsc": {

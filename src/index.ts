@@ -65,7 +65,7 @@ export interface IS3UploadSignedUrlApiProps {
 }
 
 
-export class S3UploadSignedUrlApi extends cdk.Construct {
+export class S3UploadPresignedUrlApi extends cdk.Construct {
 
   public readonly restApi: api.RestApi;
   public readonly userPool?: cognito.UserPool | any = undefined;

@@ -1,7 +1,7 @@
 import * as cdk from '@aws-cdk/core';
-import { S3UploadSignedUrlApi } from './index';
+import { S3UploadPresignedUrlApi } from './index';
 
 const app = new cdk.App();
 const stack = new cdk.Stack(app, 'MyStack');
 
-new S3UploadSignedUrlApi(stack, 'S3UploadSignedUrl');
+new S3UploadPresignedUrlApi(stack, 'S3UploadSignedUrl');

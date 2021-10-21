@@ -2,31 +2,31 @@
 
 ## Constructs <a name="Constructs"></a>
 
-### S3UploadSignedUrlApi <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi"></a>
+### S3UploadPresignedUrlApi <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi"></a>
 
-#### Initializers <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.Initializer"></a>
+#### Initializers <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.Initializer"></a>
 
 ```typescript
-import { S3UploadSignedUrlApi } from 'cdk-s3-upload-signed-url'
+import { S3UploadPresignedUrlApi } from 'cdk-s3-upload-presignedurl-api'
 
-new S3UploadSignedUrlApi(scope: Construct, id: string, props?: IS3UploadSignedUrlApiProps)
+new S3UploadPresignedUrlApi(scope: Construct, id: string, props?: IS3UploadSignedUrlApiProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.parameter.scope"></a>
 
 - *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.parameter.props"></a>
+##### `props`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.parameter.props"></a>
 
-- *Type:* [`cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps`](#cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps)
+- *Type:* [`cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps`](#cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps)
 
 ---
 
@@ -34,7 +34,7 @@ new S3UploadSignedUrlApi(scope: Construct, id: string, props?: IS3UploadSignedUr
 
 #### Properties <a name="Properties"></a>
 
-##### `restApi`<sup>Required</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.property.restApi"></a>
+##### `restApi`<sup>Required</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.property.restApi"></a>
 
 ```typescript
 public readonly restApi: RestApi;
@@ -44,7 +44,7 @@ public readonly restApi: RestApi;
 
 ---
 
-##### `userPool`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.property.userPool"></a>
+##### `userPool`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.property.userPool"></a>
 
 ```typescript
 public readonly userPool: any;
@@ -54,7 +54,7 @@ public readonly userPool: any;
 
 ---
 
-##### `userPoolClient`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.S3UploadSignedUrlApi.property.userPoolClient"></a>
+##### `userPoolClient`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.S3UploadPresignedUrlApi.property.userPoolClient"></a>
 
 ```typescript
 public readonly userPoolClient: any;
@@ -69,14 +69,14 @@ public readonly userPoolClient: any;
 
 ## Protocols <a name="Protocols"></a>
 
-### IS3UploadSignedUrlApiProps <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps"></a>
+### IS3UploadSignedUrlApiProps <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps"></a>
 
-- *Implemented By:* [`cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps`](#cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps)
+- *Implemented By:* [`cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps`](#cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps)
 
 
 #### Properties <a name="Properties"></a>
 
-##### `allowedOrigins`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.allowedOrigins"></a>
+##### `allowedOrigins`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.allowedOrigins"></a>
 
 ```typescript
 public readonly allowedOrigins: string[];
@@ -91,7 +91,7 @@ Should allow your domain(s) as allowed origin to request the API
 
 ---
 
-##### `apiGatewayProps`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.apiGatewayProps"></a>
+##### `apiGatewayProps`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.apiGatewayProps"></a>
 
 ```typescript
 public readonly apiGatewayProps: any;
@@ -104,7 +104,7 @@ Optional user provided props to override the default props for the API Gateway.
 
 ---
 
-##### `existingBucketObj`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.existingBucketObj"></a>
+##### `existingBucketObj`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.existingBucketObj"></a>
 
 ```typescript
 public readonly existingBucketObj: Bucket;
@@ -117,7 +117,7 @@ Optional bucket where files should be uploaded to.
 
 ---
 
-##### `existingUserPoolObj`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.existingUserPoolObj"></a>
+##### `existingUserPoolObj`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.existingUserPoolObj"></a>
 
 ```typescript
 public readonly existingUserPoolObj: UserPool;
@@ -132,7 +132,7 @@ You should have created a User Pool Client too.
 
 ---
 
-##### `expiration`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.expiration"></a>
+##### `expiration`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.expiration"></a>
 
 ```typescript
 public readonly expiration: number;
@@ -147,7 +147,7 @@ Time before the presigned url expires.
 
 ---
 
-##### `secured`<sup>Optional</sup> <a name="cdk-s3-upload-signed-url.IS3UploadSignedUrlApiProps.property.secured"></a>
+##### `secured`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.secured"></a>
 
 ```typescript
 public readonly secured: boolean;
