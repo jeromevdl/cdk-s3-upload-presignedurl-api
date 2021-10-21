@@ -36,6 +36,7 @@ const project = new AwsCdkConstructLibrary({
   ],
   devDeps: [
     'ts-node',
+    '@jest/globals',
   ], /* Build dependencies for this module. */
   // release: undefined,              /* Add release management to this project. */
   dependabot: false,

@@ -271,7 +271,7 @@
           "exec": "yarn install --check-files"
         },
         {
-          "exec": "yarn upgrade @aws-cdk/assert @aws-cdk/aws-apigateway @aws-cdk/aws-cognito @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-lambda @aws-cdk/aws-logs @aws-cdk/aws-s3 @aws-cdk/core @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak json-schema npm-check-updates standard-version ts-jest ts-node typescript @aws-cdk/aws-apigateway @aws-cdk/aws-cognito @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-lambda @aws-cdk/aws-logs @aws-cdk/aws-s3 @aws-cdk/core constructs"
+          "exec": "yarn upgrade @aws-cdk/assert @aws-cdk/aws-apigateway @aws-cdk/aws-cognito @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-lambda @aws-cdk/aws-logs @aws-cdk/aws-s3 @aws-cdk/core @jest/globals @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint eslint-import-resolver-node eslint-import-resolver-typescript eslint-plugin-import jest jest-junit jsii jsii-diff jsii-docgen jsii-pacmak json-schema npm-check-updates standard-version ts-jest ts-node typescript @aws-cdk/aws-apigateway @aws-cdk/aws-cognito @aws-cdk/aws-lambda-nodejs @aws-cdk/aws-lambda @aws-cdk/aws-logs @aws-cdk/aws-s3 @aws-cdk/core constructs"
         },
         {
           "exec": "npx projen"

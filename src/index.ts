@@ -77,7 +77,7 @@ export class S3UploadSignedUrlApi extends cdk.Construct {
   constructor(scope: cdk.Construct, id: string, props?: IS3UploadSignedUrlApiProps) {
     super(scope, id);
 
-    const securedApi : boolean = props?.secured === undefined ? true : props?.secured;
+    const securedApi : boolean = props?.secured === undefined ? true : props.secured;
 
     if (!securedApi && props?.existingUserPoolObj) {
       throw new Error('You don\'t need to pass a User Pool if the API is not secured');
@@ -146,6 +146,8 @@ export class S3UploadSignedUrlApi extends cdk.Construct {
 
         new CfnOutput(this, 'User Pool Id', { value: this.userPool.userPoolId });
         new CfnOutput(this, 'User Pool Client Id', { value: this.userPoolClient.userPoolClientId });
+      } else {
+        this.userPool = props.existingUserPoolObj;
       }
 
       apiGatewayAuthorizer = new api.CognitoUserPoolsAuthorizer(this, 'CognitoAuthorizer', {
