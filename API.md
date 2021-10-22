@@ -115,6 +115,8 @@ public readonly existingBucketObj: Bucket;
 
 Optional bucket where files should be uploaded to.
 
+Should contains the CORS properties
+
 ---
 
 ##### `existingUserPoolObj`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.existingUserPoolObj"></a>
@@ -144,6 +146,19 @@ public readonly expiration: number;
 Optional expiration time in second.
 
 Time before the presigned url expires.
+
+---
+
+##### `logRetention`<sup>Optional</sup> <a name="cdk-s3-upload-presignedurl-api.IS3UploadSignedUrlApiProps.property.logRetention"></a>
+
+```typescript
+public readonly logRetention: RetentionDays;
+```
+
+- *Type:* [`@aws-cdk/aws-logs.RetentionDays`](#@aws-cdk/aws-logs.RetentionDays)
+- *Default:* one week
+
+Optional log retention time for Lambda and API Gateway.
 
 ---
 

@@ -212,35 +212,6 @@
         }
       ]
     },
-    "publish:maven": {
-      "name": "publish:maven",
-      "description": "Publish this package to Maven Central",
-      "requiredEnv": [
-        "MAVEN_GPG_PRIVATE_KEY",
-        "MAVEN_GPG_PRIVATE_KEY_PASSPHRASE",
-        "MAVEN_PASSWORD",
-        "MAVEN_USERNAME",
-        "MAVEN_STAGING_PROFILE_ID"
-      ],
-      "steps": [
-        {
-          "exec": "npx -p jsii-release@latest jsii-release-maven"
-        }
-      ]
-    },
-    "publish:pypi": {
-      "name": "publish:pypi",
-      "description": "Publish this package to PyPI",
-      "requiredEnv": [
-        "TWINE_USERNAME",
-        "TWINE_PASSWORD"
-      ],
-      "steps": [
-        {
-          "exec": "npx -p jsii-release@latest jsii-release-pypi"
-        }
-      ]
-    },
     "docgen": {
       "name": "docgen",
       "description": "Generate API.md from .jsii manifest",

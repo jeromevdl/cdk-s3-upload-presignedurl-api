@@ -11,6 +11,7 @@ const project = new AwsCdkConstructLibrary({
   name: PROJECT_NAME,
   packageName: PROJECT_NAME,
   description: 'API to get an S3 presigned url for file uploads',
+  keywords: ['aws', 'cdk', 's3', 'upload'],
   repositoryUrl: `https://github.com/jeromevdl/${PROJECT_NAME}.git`,
   cdkDependencies: [
     '@aws-cdk/core',
@@ -21,31 +22,29 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-logs',
     '@aws-cdk/aws-cognito',
   ],
-  python: {
-    distName: PROJECT_NAME,
-    module: PROJECT_NAME,
-  },
-  publishToMaven: {
-    javaPackage: 'com.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
-    mavenGroupId: 'com.github.jeromevdl.awscdk',
-    mavenArtifactId: PROJECT_NAME,
-  },
+  // python: {
+  //   distName: PROJECT_NAME,
+  //   module: PROJECT_NAME,
+  // },
+  // publishToMaven: {
+  //   javaPackage: 'com.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
+  //   mavenGroupId: 'com.github.jeromevdl.awscdk',
+  //   mavenArtifactId: PROJECT_NAME,
+  // },
   // cdkTestDependencies: []],
   // deps: [],
   devDeps: [
     'ts-node',
     '@jest/globals',
   ],
-  gitignore: [
-    'yarn.lock',
-    '.DS_Store',
-    'cdk.out',
-  ],
   // release: undefined,              /* Add release management to this project. */
   dependabot: false,
   cdkDependenciesAsDeps: false,
 });
-project.addPackageIgnore('.DS_Store');
-project.addPackageIgnore('cdk.out');
-project.addPackageIgnore('yarn.lock');
+
+const common_exclude = ['yarn.lock', '.DS_Store', 'cdk.out'];
+
+project.npmignore.exclude(...common_exclude, 'front', 'images');
+project.gitignore.exclude(...common_exclude);
+
 project.synth();

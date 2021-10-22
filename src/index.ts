@@ -21,7 +21,7 @@ import { CfnOutput } from '@aws-cdk/core';
 
 export interface IS3UploadSignedUrlApiProps {
   /**
-   * Optional bucket where files should be uploaded to.
+   * Optional bucket where files should be uploaded to. Should contains the CORS properties
    *
    * @default - Default Bucket is created
    */
@@ -62,6 +62,13 @@ export interface IS3UploadSignedUrlApiProps {
    * @default true
    */
   readonly secured?: boolean;
+
+  /**
+   * Optional log retention time for Lambda and API Gateway
+   *
+   * @default one week
+   */
+  readonly logRetention?: logs.RetentionDays;
 }
 
 
@@ -83,7 +90,15 @@ export class S3UploadPresignedUrlApi extends cdk.Construct {
       throw new Error('You don\'t need to pass a User Pool if the API is not secured');
     }
 
-    const bucket = props?.existingBucketObj || new s3.Bucket(this, 'uploadBucket');
+    const bucket = props?.existingBucketObj || new s3.Bucket(this, 'uploadBucket', {
+      cors: [
+        {
+          allowedMethods: [s3.HttpMethods.HEAD, s3.HttpMethods.GET, s3.HttpMethods.PUT],
+          allowedOrigins: props?.allowedOrigins || ['*'],
+          allowedHeaders: ['Authorization', '*'],
+        },
+      ],
+    });
 
     // Lambda function in charge of creating the PreSigned URL
     const getS3SignedUrlLambda = new NodejsFunction(this, 'getS3SignedUrlLambda', {
@@ -92,9 +107,10 @@ export class S3UploadPresignedUrlApi extends cdk.Construct {
       environment: {
         UPLOAD_BUCKET: bucket.bucketName,
         URL_EXPIRATION_SECONDS: (props?.expiration || 300).toString(),
+        ALLOWED_ORIGIN: props?.allowedOrigins?.join(',') || '*',
       },
       tracing: lambda.Tracing.ACTIVE,
-      logRetention: logs.RetentionDays.ONE_WEEK,
+      logRetention: props?.logRetention || logs.RetentionDays.ONE_WEEK,
       timeout: cdk.Duration.seconds(10),
       memorySize: 128,
     });
@@ -103,7 +119,7 @@ export class S3UploadPresignedUrlApi extends cdk.Construct {
 
     // Rest API
     const apiLogGroup = new logs.LogGroup(this, 'S3SignedUrlApiLogGroup', {
-      retention: logs.RetentionDays.ONE_WEEK,
+      retention: props?.logRetention || logs.RetentionDays.ONE_WEEK,
     });
 
     let apiProps: api.RestApiProps = props?.apiGatewayProps || {
@@ -122,13 +138,6 @@ export class S3UploadPresignedUrlApi extends cdk.Construct {
     };
 
     this.restApi = new api.RestApi(this, 'S3SignedUrlApi', apiProps);
-
-    this.restApi.root.addCorsPreflight({
-      allowHeaders: ['*'],
-      allowOrigins: props?.allowedOrigins || api.Cors.ALL_ORIGINS,
-      allowMethods: ['OPTIONS', 'GET'],
-      allowCredentials: true,
-    });
 
     // Adding security on the API if needed
     var apiGatewayAuthorizer: api.Authorizer | any = undefined;
@@ -167,6 +176,14 @@ export class S3UploadPresignedUrlApi extends cdk.Construct {
         validateRequestBody: false,
         validateRequestParameters: true,
       },
+    });
+
+    // CORS configuration for the API
+    this.restApi.root.addCorsPreflight({
+      allowHeaders: ['Authorization', '*'],
+      allowOrigins: props?.allowedOrigins || ['*'],
+      allowMethods: ['OPTIONS', 'GET'],
+      allowCredentials: true,
     });
 
     if (securedApi) {

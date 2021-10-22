@@ -21,6 +21,8 @@ dist
 tsconfig.tsbuildinfo
 /.eslintrc.json
 !.jsii
+yarn.lock
 .DS_Store
 cdk.out
-yarn.lock
+front
+images
