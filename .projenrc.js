@@ -46,7 +46,7 @@ const project = new AwsCdkConstructLibrary({
   cdkDependenciesAsDeps: false,
 });
 
-const common_exclude = ['yarn.lock', '.DS_Store', 'cdk.out'];
+const common_exclude = ['.DS_Store', 'cdk.out'];
 
 project.npmignore.exclude(...common_exclude, 'front', 'images');
 project.gitignore.exclude(...common_exclude);

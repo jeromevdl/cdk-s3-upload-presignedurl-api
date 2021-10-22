@@ -47,7 +47,6 @@ junit.xml
 .jsii
 tsconfig.json
 !/API.md
-yarn.lock
 .DS_Store
 cdk.out
 !/.github/workflows/release.yml
