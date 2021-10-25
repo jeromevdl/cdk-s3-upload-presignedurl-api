@@ -33,8 +33,8 @@ const project = new AwsCdkConstructLibrary({
     module: PROJECT_NAME,
   },
   publishToMaven: {
-    javaPackage: 'com.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
-    mavenGroupId: 'com.github.jeromevdl.awscdk',
+    javaPackage: 'io.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
+    mavenGroupId: 'io.github.jeromevdl.awscdk',
     mavenArtifactId: PROJECT_NAME,
   },
   tsconfig: {

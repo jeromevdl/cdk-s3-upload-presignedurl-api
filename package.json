@@ -132,9 +132,9 @@
     "outdir": "dist",
     "targets": {
       "java": {
-        "package": "com.github.jeromevdl.awscdk.s3uploadpresignedurlapi",
+        "package": "io.github.jeromevdl.awscdk.s3uploadpresignedurlapi",
         "maven": {
-          "groupId": "com.github.jeromevdl.awscdk",
+          "groupId": "io.github.jeromevdl.awscdk",
           "artifactId": "cdk-s3-upload-presignedurl-api"
         }
       },
