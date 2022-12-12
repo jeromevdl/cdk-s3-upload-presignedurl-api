@@ -4,5 +4,8 @@
     "description": "Get a S3 presigned url to upload a file",
     "dependencies": {
         "mime-types": "2.1.33"
+    },
+    "devDependencies": {
+        "esbuild": "^0.16.4"
     }
 }
