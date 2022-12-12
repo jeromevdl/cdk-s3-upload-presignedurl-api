@@ -16,8 +16,6 @@ const project = new awscdk.AwsCdkConstructLibrary({
   licensed: true,
   license: 'Apache-2.0',
   gitpod: true,
-  docgen: true,
-  docgenFilePath: 'API.md',
   eslint: true,
   mergify: true,
 
