@@ -50,6 +50,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   devDeps: [
     'ts-node',
     '@jest/globals',
+    'esbuild',
   ],
 
   tsconfig: {
