@@ -4,7 +4,7 @@ name: release
 on:
   push:
     branches:
-      - main
+      - release
   workflow_dispatch: {}
 jobs:
   release:
@@ -26,8 +26,8 @@ jobs:
           git config user.email "github-actions@github.com"
       - name: Install dependencies
         run: yarn install --check-files --frozen-lockfile
-      - name: release
-        run: npx projen release
+      - name: release:release
+        run: npx projen release:release
       - name: Check for new commits
         id: git_remote
         run: echo "latest_commit=$(git ls-remote origin -h ${{ github.ref }} | cut -f1)" >> $GITHUB_OUTPUT

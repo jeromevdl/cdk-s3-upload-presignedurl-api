@@ -16,6 +16,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   licensed: true,
   license: 'Apache-2.0',
   gitpod: true,
+  docgen: true,
+  docgenFilePath: 'API.md',
   eslint: true,
   mergify: true,
 
@@ -24,8 +26,8 @@ const project = new awscdk.AwsCdkConstructLibrary({
   buildWorkflowTriggers: { pullRequest: {}, push: {} },
 
   // Publish to Npm
-  releaseToNpm: true,
-  packageName: PROJECT_NAME,
+  // releaseToNpm: true,
+  // packageName: PROJECT_NAME,
 
   // Publish to Pypi
   // publishToPypi: {
@@ -40,10 +42,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // },
 
   // Release Trigger
-  // release: true,
-  // releaseEveryCommit: true,
-  // defaultReleaseBranch: 'release',
-  // releaseWorkflow: true,
+  release: true,
+  releaseEveryCommit: true,
+  defaultReleaseBranch: 'release',
+  releaseWorkflow: true,
 
   devDeps: [
     'ts-node',
