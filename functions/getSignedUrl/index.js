@@ -7,7 +7,7 @@ const s3 = new AWS.S3()
 exports.handler = async (event) => {
   // console.log(event);
 
-  uploadURL = await getUploadURL(event);
+  const uploadURL = await getUploadURL(event);
 
   return {
     "statusCode": 200,
@@ -22,12 +22,12 @@ exports.handler = async (event) => {
 }
 
 const getUploadURL = async function(event) {
-  
+
   const apiRequestId = event.requestContext.requestId;
   const contentType = event.queryStringParameters.contentType;
   const extension = mime.extension(contentType);
   const s3Key = `${apiRequestId}.${extension}`;
-  
+
   // Get signed URL from S3
   const s3Params = {
     Bucket: process.env.UPLOAD_BUCKET,
@@ -35,8 +35,7 @@ const getUploadURL = async function(event) {
     Expires: parseInt(process.env.URL_EXPIRATION_SECONDS),
     ContentType: contentType
   }
-
-  const signedUrl = await s3.getSignedUrlPromise('putObject', s3Params)
+  const signedUrl = await s3.getSignedUrlPromise('putObject', s3Params);
 
   return {
     uploadURL: signedUrl,
