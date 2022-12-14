@@ -37,6 +37,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: PROJECT_NAME,
   },
 
+  // Publish to Nuget
+  publishToNuget: {},
+
   publishToMaven: {
     javaPackage: 'io.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
     mavenGroupId: 'io.github.jeromevdl.awscdk',
