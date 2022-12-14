@@ -37,11 +37,11 @@ const project = new awscdk.AwsCdkConstructLibrary({
     module: PROJECT_NAME,
   },
 
-  // publishToMaven: {
-  //   javaPackage: 'io.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
-  //   mavenGroupId: 'io.github.jeromevdl.awscdk',
-  //   mavenArtifactId: 's3-upload-presignedurl-api',
-  // },
+  publishToMaven: {
+    javaPackage: 'io.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
+    mavenGroupId: 'io.github.jeromevdl.awscdk',
+    mavenArtifactId: 's3-upload-presignedurl-api',
+  },
 
   // Release Trigger
   release: true,
