@@ -21,7 +21,6 @@
     "package:python": "npx projen package:python",
     "post-compile": "npx projen post-compile",
     "pre-compile": "npx projen pre-compile",
-    "publish:git": "npx projen publish:git",
     "release": "npx projen release",
     "test": "npx projen test",
     "test:watch": "npx projen test:watch",

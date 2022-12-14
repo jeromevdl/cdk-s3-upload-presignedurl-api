@@ -1,4 +1,5 @@
 const { awscdk } = require('projen');
+const { ReleaseTrigger } = require('projen/lib/release');
 
 const PROJECT_NAME = 'cdk-s3-upload-presignedurl-api';
 
@@ -45,9 +46,9 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // Release Trigger
   release: true,
   releaseEveryCommit: false,
+  releaseTrigger: ReleaseTrigger.manual,
   defaultReleaseBranch: 'main',
   releaseWorkflow: true,
-
 
   devDeps: [
     'ts-node',
