@@ -24,7 +24,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   mergify: true,
 
   githubOptions: {
-    pullRequestLint: false
+    pullRequestLint: false,
   },
 
   // Build Trigger
