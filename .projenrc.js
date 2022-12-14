@@ -26,14 +26,14 @@ const project = new awscdk.AwsCdkConstructLibrary({
   buildWorkflowTriggers: { pullRequest: {}, push: {} },
 
   // Publish to Npm
-  // releaseToNpm: true,
-  // packageName: PROJECT_NAME,
+  releaseToNpm: true,
+  packageName: PROJECT_NAME,
 
   // Publish to Pypi
-  // publishToPypi: {
-  //   distName: PROJECT_NAME,
-  //   module: 'PROJECT_NAME,
-  // },
+  publishToPypi: {
+    distName: PROJECT_NAME,
+    module: PROJECT_NAME,
+  },
 
   // publishToMaven: {
   //   javaPackage: 'io.github.jeromevdl.awscdk.s3uploadpresignedurlapi',
