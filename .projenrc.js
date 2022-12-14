@@ -18,6 +18,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   gitpod: true,
   docgen: true,
   docgenFilePath: 'API.md',
+  dependabot: true,
   eslint: true,
   mergify: true,
 
@@ -43,9 +44,10 @@ const project = new awscdk.AwsCdkConstructLibrary({
 
   // Release Trigger
   release: true,
-  releaseEveryCommit: true,
-  defaultReleaseBranch: 'release',
+  releaseEveryCommit: false,
+  defaultReleaseBranch: 'main',
   releaseWorkflow: true,
+
 
   devDeps: [
     'ts-node',
