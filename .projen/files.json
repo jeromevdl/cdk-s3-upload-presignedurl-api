@@ -5,7 +5,6 @@
     ".github/dependabot.yml",
     ".github/pull_request_template.md",
     ".github/workflows/build.yml",
-    ".github/workflows/pull-request-lint.yml",
     ".github/workflows/release.yml",
     ".gitignore",
     ".gitpod.yml",
