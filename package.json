@@ -65,8 +65,10 @@
     "constructs": "^10.0.5"
   },
   "keywords": [
+    "api gateway",
     "aws",
     "cdk",
+    "presigned",
     "s3",
     "upload"
   ],

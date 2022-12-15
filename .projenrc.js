@@ -11,7 +11,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: PROJECT_NAME,
   packageName: PROJECT_NAME,
   description: 'API to get an S3 presigned url for file uploads',
-  keywords: ['aws', 'cdk', 's3', 'upload'],
+  keywords: ['aws', 'cdk', 's3', 'upload', 'presigned', 'api gateway'],
   repositoryUrl: `https://github.com/jeromevdl/${PROJECT_NAME}.git`,
 
   licensed: true,

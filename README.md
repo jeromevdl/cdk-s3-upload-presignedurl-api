@@ -1,5 +1,7 @@
 # cdk-s3-upload-presignedurl-api
 
+![npmjs](https://img.shields.io/npm/v/cdk-s3-upload-presignedurl-api) ![PyPI](https://img.shields.io/pypi/v/cdk-s3-upload-presignedurl-api) ![Maven Central](https://img.shields.io/maven-central/v/io.github.jeromevdl.awscdk/s3-upload-presignedurl-api)
+
 cdk-s3-upload-presignedurl-api is AWS CDK construct library that create an API to get a presigned url to upload a file in S3.
 
 ## Background
