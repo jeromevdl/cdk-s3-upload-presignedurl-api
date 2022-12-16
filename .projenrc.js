@@ -1,7 +1,8 @@
 const { awscdk } = require('projen');
 const { ReleaseTrigger } = require('projen/lib/release');
 
-const PROJECT_NAME = 'cdk-s3-upload-presignedurl-api';
+const PROJECT_NAME          = 'cdk-s3-upload-presignedurl-api';
+const PYTHON_MODULE_NAME    = 'cdk_s3_upload_presignedurl_api';
 
 const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Jerome Van Der Linden',
@@ -38,7 +39,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // Publish to Pypi
   publishToPypi: {
     distName: PROJECT_NAME,
-    module: PROJECT_NAME.toString().replaceAll("-", "_"),
+    module: PYTHON_MODULE_NAME,
   },
 
   // Publish to Maven Central
