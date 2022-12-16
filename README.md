@@ -1,6 +1,6 @@
 # cdk-s3-upload-presignedurl-api
 
-![npmjs](https://img.shields.io/npm/v/cdk-s3-upload-presignedurl-api) ![PyPI](https://img.shields.io/pypi/v/cdk-s3-upload-presignedurl-api) ![Maven Central](https://img.shields.io/maven-central/v/io.github.jeromevdl.awscdk/s3-upload-presignedurl-api)
+![npmjs](https://img.shields.io/npm/v/cdk-s3-upload-presignedurl-api?color=red) ![PyPI](https://img.shields.io/pypi/v/cdk-s3-upload-presignedurl-api?color=yellow) ![Maven Central](https://img.shields.io/maven-central/v/io.github.jeromevdl.awscdk/s3-upload-presignedurl-api?color=blue)
 
 cdk-s3-upload-presignedurl-api is AWS CDK construct library that create an API to get a presigned url to upload a file in S3.
 
@@ -54,7 +54,7 @@ $ pip install cdk-s3-upload-presignedurl-api
 
 ```py
 import aws_cdk.core as cdk
-from cdk-s3-upload-presignedurl-api import S3UploadPresignedUrlApi
+from cdk_s3_upload_presignedurl_api import S3UploadPresignedUrlApi
 
 app = cdk.App()
 stack = cdk.Stack(app, "<your-stack-name>")

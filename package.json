@@ -129,7 +129,7 @@
       },
       "python": {
         "distName": "cdk-s3-upload-presignedurl-api",
-        "module": "cdk-s3-upload-presignedurl-api"
+        "module": "cdk_s3_upload_presignedurl_api"
       }
     },
     "tsc": {
