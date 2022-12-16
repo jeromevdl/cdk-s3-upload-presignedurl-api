@@ -146,7 +146,8 @@
       {
         "devDependencies": [
           "**/test/**",
-          "**/build-tools/**"
+          "**/build-tools/**",
+          "src/index.lambda.ts"
         ],
         "optionalDependencies": false,
         "peerDependencies": true

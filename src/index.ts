@@ -2,10 +2,12 @@ import { Duration, CfnOutput } from 'aws-cdk-lib';
 import { AccessLogFormat, AuthorizationType, Authorizer, CfnMethod, CognitoUserPoolsAuthorizer, EndpointType, LambdaIntegration, LogGroupLogDestination, MethodLoggingLevel, RestApi, RestApiProps } from 'aws-cdk-lib/aws-apigateway';
 import { CfnUserPool, UserPool, UserPoolClient } from 'aws-cdk-lib/aws-cognito';
 import { Tracing } from 'aws-cdk-lib/aws-lambda';
-import { NodejsFunction, Charset } from 'aws-cdk-lib/aws-lambda-nodejs';
+// import { Tracing } from 'aws-cdk-lib/aws-lambda';
+// import { NodejsFunction, Charset } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
 import { Bucket, HttpMethods } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
+import { IndexFunction } from './index-function';
 
 export interface IS3UploadSignedUrlApiProps {
   /**
@@ -86,14 +88,7 @@ export class S3UploadPresignedUrlApi extends Construct {
     });
 
     // Lambda function in charge of creating the PreSigned URL
-    const getS3SignedUrlLambda = new NodejsFunction(this, 'getS3SignedUrlLambda', {
-      entry: 'functions/getSignedUrl/index.js',
-      bundling: {
-        forceDockerBundling: false,
-        minify: true,
-        target: 'es2020',
-        charset: Charset.UTF8,
-      },
+    const getS3SignedUrlLambda = new IndexFunction(this, 'getS3SignedUrlLambda', {
       description: 'Function that creates a presigned URL to upload a file into S3',
       environment: {
         UPLOAD_BUCKET: this.bucket.bucketName,

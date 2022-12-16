@@ -1,3 +1,4 @@
+const { Runtime } = require('aws-cdk-lib/aws-lambda');
 const { awscdk } = require('projen');
 const { ReleaseTrigger } = require('projen/lib/release');
 
@@ -57,10 +58,17 @@ const project = new awscdk.AwsCdkConstructLibrary({
   defaultReleaseBranch: 'main',
   releaseWorkflow: true,
 
+  lambdaOptions: {
+    runtime: awscdk.LambdaRuntime.NODEJS_18_X,
+  },
+
   devDeps: [
     'ts-node',
     '@jest/globals',
+    'es-mime-types',
     'esbuild',
+    '@aws-sdk/s3-request-presigner',
+    '@aws-sdk/client-s3',
   ],
 
   tsconfig: {

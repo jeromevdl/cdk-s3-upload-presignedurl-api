@@ -1,6 +1,14 @@
 {
   "dependencies": [
     {
+      "name": "@aws-sdk/client-s3",
+      "type": "build"
+    },
+    {
+      "name": "@aws-sdk/s3-request-presigner",
+      "type": "build"
+    },
+    {
       "name": "@jest/globals",
       "type": "build"
     },
@@ -32,6 +40,10 @@
     {
       "name": "constructs",
       "version": "10.0.5",
+      "type": "build"
+    },
+    {
+      "name": "es-mime-types",
       "type": "build"
     },
     {

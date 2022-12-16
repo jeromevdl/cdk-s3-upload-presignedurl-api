@@ -8,6 +8,9 @@
   "scripts": {
     "build": "npx projen build",
     "bump": "npx projen bump",
+    "bundle": "npx projen bundle",
+    "bundle:index.lambda": "npx projen bundle:index.lambda",
+    "bundle:index.lambda:watch": "npx projen bundle:index.lambda:watch",
     "clobber": "npx projen clobber",
     "compat": "npx projen compat",
     "compile": "npx projen compile",
@@ -35,6 +38,8 @@
     "organization": false
   },
   "devDependencies": {
+    "@aws-sdk/client-s3": "^3.231.0",
+    "@aws-sdk/s3-request-presigner": "^3.231.0",
     "@jest/globals": "^29.3.1",
     "@types/jest": "^27",
     "@types/node": "^14",
@@ -42,6 +47,7 @@
     "@typescript-eslint/parser": "^5",
     "aws-cdk-lib": "2.54.0",
     "constructs": "10.0.5",
+    "es-mime-types": "*",
     "esbuild": "^0.16.4",
     "eslint": "^8",
     "eslint-import-resolver-node": "^0.3.6",
