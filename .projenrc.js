@@ -38,7 +38,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   // Publish to Pypi
   publishToPypi: {
     distName: PROJECT_NAME,
-    module: PROJECT_NAME.replaceAll("-", "_"),
+    module: PROJECT_NAME.toString().replaceAll("-", "_"),
   },
 
   // Publish to Maven Central
