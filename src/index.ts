@@ -130,7 +130,9 @@ export class S3UploadPresignedUrlApi extends Construct {
 
     if (securedApi) {
       if (!props?.existingUserPoolObj) {
-        this.userPool = new UserPool(this, 'CognitoUserPool');
+        this.userPool = new UserPool(this, 'CognitoUserPool', {
+          selfSignUpEnabled: true,
+        });
         this.userPoolClient = new UserPoolClient(this, 'CognitoUserPoolClient', {
           userPool: this.userPool,
         });
