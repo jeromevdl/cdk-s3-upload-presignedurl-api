@@ -107,3 +107,43 @@ You can also customize the construct:
 - You can choose the log retention period (`logRetention`) for Lambda and API Gateway.
 
 See [API reference](https://github.com/jeromevdl/cdk-s3-upload-presignedurl-api/blob/main/API.md#is3uploadsignedurlapiprops-) for the details.
+
+## Client-side usage
+
+**_Hint_**: A complete example (ReactJS / Amplify) if provided in the GitHub repository ([frontend](https://github.com/jeromevdl/cdk-s3-upload-presignedurl-api/tree/main/frontend) folder).
+
+Once the components are deployed, you will need to query the API from the client. In order to do so, you need to retrieve the outputs of the CloudFormation Stack:
+- The API Endpoint (eg. `https://12345abcd.execute-api.eu-west-1.amazonaws.com/prod/`)
+- The User Pool Id (eg. `eu-west-1_2b4C6E8g`)
+- The User Pool Client Id (eg. `g5465n67cvfc7n6jn54768`)
+
+### Create a user in Cognito User Pool
+If you let the Construct configuration by default (`secured = true` and no reuse of pre-existing User Pool), you will have to create users in the User Pool. See the [documentation](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-create-user-accounts.html). Note that the user pool allows self-registration of users.
+
+### Client connection to Cognito User Pool
+To authenticate the users on your client, you can use the [`amazon-cognito-identity-js`](https://www.npmjs.com/package/amazon-cognito-identity-js) library or [Amplify](https://docs.amplify.aws/lib/auth/getting-started/q/platform/js/) which is much simpler to setup.
+
+### Calling the API
+- HTTP Method: `GET`
+- URL: https://12345abcd.execute-api.eu-west-1.amazonaws.com/prod/ (replace with yours)
+- Query Parameters: `contentType` (a valid MIME Type, eg. `image/png` or `application/pdf`)
+- Headers: `Authorization` header must contain the JWT Token retrieve from Cognito
+    - Ex with Amplify: `Auth.currentSession()).getIdToken().getJwtToken()`
+
+Ex with curl:
+```bash
+curl "https://ab12cd34.execute-api.eu-west-1.amazonaws.com/prod/?contentType=image/png" -H "Authorization: eyJraW...AZjp4gQA"
+```
+
+The API will return a JSON containing the `uploadURL` and the `key` of the S3 object:
+```json
+{"uploadURL":"https://yourbucknetname.s3.eu-west-1.amazonaws.com/0454dfa5-8ca5-448a-ae30-9b734313362a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=SADJKLJKJDF3%24NFDSFDFeu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221218T095711Z&X-Amz-Expires=300&X-Amz-Security-Token=1234cdef&X-Amz-Signature=13579abcde&X-Amz-SignedHeaders=host&x-id=PutObject","key":"0454dfa5-8ca5-448a-ae30-9b734313362a.png"}
+```
+
+### Upload the file
+You can finally use the `uploadURL` and the `PUT` HTTP method to upload your file to S3. You need to specify the exact same content type in the headers.
+
+Ex with curl:
+```bash
+curl  "https://yourbucknetname.s3.eu-west-1.amazonaws.com/0454dfa5-8ca5-448a-ae30-9b734313362a.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=SADJKLJKJDF3%24NFDSFDFeu-west-1%2Fs3%2Faws4_request&X-Amz-Date=20221218T095711Z&X-Amz-Expires=300&X-Amz-Security-Token=1234cdef&X-Amz-Signature=13579abcde&X-Amz-SignedHeaders=host&x-id=PutObject" --upload-file "path/to/my/file.png" -H "Content-Type: image/png"
+```
