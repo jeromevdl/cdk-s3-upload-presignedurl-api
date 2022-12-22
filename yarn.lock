@@ -739,17 +739,17 @@
     tslib "^2.3.1"
 
 "@aws-sdk/s3-request-presigner@^3.231.0":
-  version "3.231.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.231.0.tgz#a10c64842ff8e3089321296720c69a0e3f9a9765"
-  integrity sha512-bbprPHsyl+brcoLsaT0Pbk1er+Yxjfsp6vnJW1Jn0G7O8gYwdnLL8Qbe1FGwEh5M1ddm9KIYO1eyIfSPSoecMQ==
+  version "3.236.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/s3-request-presigner/-/s3-request-presigner-3.236.0.tgz#13271573d205cf1fde77c58eef6572feced51661"
+  integrity sha512-tDCmtKJxPXGRwj+d2oDpHpXRvZ/4IZkV4JCMLJSoP0OW0f/3NHC3cAqseL5uhXQWD6yQAsGYm8p72baLMiGU3A==
   dependencies:
     "@aws-sdk/middleware-endpoint" "3.226.0"
     "@aws-sdk/middleware-sdk-s3" "3.231.0"
     "@aws-sdk/protocol-http" "3.226.0"
     "@aws-sdk/signature-v4-multi-region" "3.226.0"
-    "@aws-sdk/smithy-client" "3.226.0"
+    "@aws-sdk/smithy-client" "3.234.0"
     "@aws-sdk/types" "3.226.0"
-    "@aws-sdk/util-create-request" "3.226.0"
+    "@aws-sdk/util-create-request" "3.234.0"
     "@aws-sdk/util-format-url" "3.226.0"
     tslib "^2.3.1"
 
@@ -787,15 +787,6 @@
     "@aws-sdk/util-hex-encoding" "3.201.0"
     "@aws-sdk/util-middleware" "3.226.0"
     "@aws-sdk/util-uri-escape" "3.201.0"
-    tslib "^2.3.1"
-
-"@aws-sdk/smithy-client@3.226.0":
-  version "3.226.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/smithy-client/-/smithy-client-3.226.0.tgz#d6869ca3627ca33024616c0ec3f707981e080d59"
-  integrity sha512-BWr1FhWSUhkSBp0TLzliD5AQBjA2Jmo9FlOOt+cBwd9BKkSGlGj+HgATYJ83Sjjg2+J6qvEZBxB78LKVHhorBw==
-  dependencies:
-    "@aws-sdk/middleware-stack" "3.226.0"
-    "@aws-sdk/types" "3.226.0"
     tslib "^2.3.1"
 
 "@aws-sdk/smithy-client@3.234.0":
@@ -878,13 +869,13 @@
   dependencies:
     tslib "^2.3.1"
 
-"@aws-sdk/util-create-request@3.226.0":
-  version "3.226.0"
-  resolved "https://registry.yarnpkg.com/@aws-sdk/util-create-request/-/util-create-request-3.226.0.tgz#9977a72c77cbe11dfe53ef2e813c6a9b8a705496"
-  integrity sha512-3WzrpO6Vx/Mh3DBnI3I7ZJ2oU9pDDusWkt7eCDULofamIz6IaZOjicwje0RJsLoFDh9LBdhrlp8m/5d+6aJn2g==
+"@aws-sdk/util-create-request@3.234.0":
+  version "3.234.0"
+  resolved "https://registry.yarnpkg.com/@aws-sdk/util-create-request/-/util-create-request-3.234.0.tgz#0fa4c30db345cd4f4faf540bcd6b5023de5ffa8c"
+  integrity sha512-rKaM2q1jRru724crQx36V6cy07f8yO6KGrsAbRdXzuS2n1c6/w56vwyAw7ArUqjPeIc8pgDxZ0K99Te/RinzdQ==
   dependencies:
     "@aws-sdk/middleware-stack" "3.226.0"
-    "@aws-sdk/smithy-client" "3.226.0"
+    "@aws-sdk/smithy-client" "3.234.0"
     "@aws-sdk/types" "3.226.0"
     tslib "^2.3.1"
 
