@@ -78,13 +78,13 @@ export class S3UploadPresignedUrlApi extends Construct {
     if (props?.existingBucketObj) {
       this.bucket = props.existingBucketObj;
     } else {
-      const logBucket = new Bucket(this, 's3AccessLogsBucket',  {
+      const logBucket = new Bucket(this, 's3AccessLogsBucket', {
         versioned: true,
         publicReadAccess: false,
         blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
         removalPolicy: RemovalPolicy.DESTROY,
         autoDeleteObjects: true,
-        encryption: BucketEncryption.S3_MANAGED
+        encryption: BucketEncryption.S3_MANAGED,
       });
 
       this.bucket = new Bucket(this, 'uploadBucket', {
@@ -154,7 +154,7 @@ export class S3UploadPresignedUrlApi extends Construct {
             requireUppercase: true,
             requireSymbols: true,
             requireDigits: true,
-          }
+          },
         });
         this.userPoolClient = new UserPoolClient(this, 'CognitoUserPoolClient', {
           userPool: this.userPool,
