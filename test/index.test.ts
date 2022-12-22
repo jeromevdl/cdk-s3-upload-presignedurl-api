@@ -18,7 +18,7 @@ test('default config should create API / Lambda and User Pool', () => {
   template.hasResourceProperties('AWS::ApiGateway::RestApi', {
     Description: 'API that retrieves a presigned URL to upload a file into S3',
   });
-  template.resourceCountIs('AWS::S3::Bucket', 1);
+  template.resourceCountIs('AWS::S3::Bucket', 2);
   template.resourceCountIs('AWS::Cognito::UserPool', 1);
   template.resourceCountIs('AWS::Cognito::UserPoolClient', 1);
 });
