@@ -1,4 +1,3 @@
-const { Runtime } = require('aws-cdk-lib/aws-lambda');
 const { awscdk } = require('projen');
 const { ReleaseTrigger } = require('projen/lib/release');
 
