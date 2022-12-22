@@ -73,6 +73,8 @@ function App({ signOut, user }) {
   const [file, setFile] = useState();
   const [status, setStatus] = useState();
   const [objectKey, setObjectKey] = useState('');
+  const [uploadURL, setUploadURL] = useState('');
+  const [error, setError] = useState('');
 
 
   const onDrop = (files) => {
@@ -85,6 +87,7 @@ function App({ signOut, user }) {
     })
     .then((response) => {
       setObjectKey(response.key);
+      setUploadURL(response.uploadURL);
       axios.put(response.uploadURL, file, {
         headers: {
           'content-type': file.type
@@ -94,9 +97,12 @@ function App({ signOut, user }) {
         setStatus(response.status);
       }).catch((error) => {
         setStatus(error.status);
+        setError(error);
+        console.error(error);
       });
     })
     .catch((error) => {
+      setError(error);
       console.error(error);
     });
   };
@@ -112,15 +118,18 @@ function App({ signOut, user }) {
         <Card variation="elevated" style={{width:'90%', display:'inline-block', textAlign: 'center'}}>
           <StyledDropzone onDrop={onDrop}/>
           <br/>
-          { status ? (
+          { status && status === 200 ? (
             <div>
-                <Text>Status: {status}</Text>
-                <Text>File name: {file.name}</Text>
-                <Text>File size: {file.size}</Text>
-                <Text>File type: {file.type}</Text>
-                <Text>Object key: {objectKey}</Text>
+              <h3>Your file was successfully uploaded:</h3>
+                <Text><b>File name</b>: {file.name}</Text>
+                <Text><b>File size</b>: {file.size}</Text>
+                <Text><b>File type</b>: {file.type}</Text><br/>
+              <h3>The following URL was used</h3>: (cannot be used twice)
+                <Text>{uploadURL}</Text><br/>
+              <h3>Your file is stored in S3 with the key:</h3>
+                <Text>{objectKey}</Text>
             </div>
-            ) : (<></>)
+            ) : error ? (<span style={{'color':'red'}}> {error}</span>) : (<></>)
             }
         </Card>
       </div>
