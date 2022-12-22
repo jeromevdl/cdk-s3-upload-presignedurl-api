@@ -1,11 +1,9 @@
-import { Duration, CfnOutput } from 'aws-cdk-lib';
+import { Duration, CfnOutput, RemovalPolicy } from 'aws-cdk-lib';
 import { AccessLogFormat, AuthorizationType, Authorizer, CfnMethod, CognitoUserPoolsAuthorizer, EndpointType, LambdaIntegration, LogGroupLogDestination, MethodLoggingLevel, RestApi, RestApiProps } from 'aws-cdk-lib/aws-apigateway';
 import { CfnUserPool, UserPool, UserPoolClient } from 'aws-cdk-lib/aws-cognito';
 import { Tracing } from 'aws-cdk-lib/aws-lambda';
-// import { Tracing } from 'aws-cdk-lib/aws-lambda';
-// import { NodejsFunction, Charset } from 'aws-cdk-lib/aws-lambda-nodejs';
 import { LogGroup, RetentionDays } from 'aws-cdk-lib/aws-logs';
-import { Bucket, HttpMethods } from 'aws-cdk-lib/aws-s3';
+import { BlockPublicAccess, Bucket, BucketEncryption, HttpMethods } from 'aws-cdk-lib/aws-s3';
 import { Construct } from 'constructs';
 import { IndexFunction } from './index-function';
 
@@ -77,15 +75,33 @@ export class S3UploadPresignedUrlApi extends Construct {
       throw new Error('You don\'t need to pass a User Pool if the API is not secured');
     }
 
-    this.bucket = props?.existingBucketObj || new Bucket(this, 'uploadBucket', {
-      cors: [
-        {
-          allowedMethods: [HttpMethods.HEAD, HttpMethods.GET, HttpMethods.PUT],
-          allowedOrigins: props?.allowedOrigins || ['*'],
-          allowedHeaders: ['Authorization', '*'],
-        },
-      ],
-    });
+    if (props?.existingBucketObj) {
+      this.bucket = props.existingBucketObj;
+    } else {
+      const logBucket = new Bucket(this, 's3AccessLogsBucket',  {
+        versioned: true,
+        publicReadAccess: false,
+        blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+        removalPolicy: RemovalPolicy.DESTROY,
+        autoDeleteObjects: true,
+        encryption: BucketEncryption.S3_MANAGED
+      });
+
+      this.bucket = new Bucket(this, 'uploadBucket', {
+        publicReadAccess: false,
+        blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+        serverAccessLogsBucket: logBucket,
+        removalPolicy: RemovalPolicy.RETAIN,
+        encryption: BucketEncryption.S3_MANAGED,
+        cors: [
+          {
+            allowedMethods: [HttpMethods.HEAD, HttpMethods.GET, HttpMethods.PUT],
+            allowedOrigins: props?.allowedOrigins || ['*'],
+            allowedHeaders: ['Authorization', '*'],
+          },
+        ],
+      });
+    }
 
     // Lambda function in charge of creating the PreSigned URL
     const getS3SignedUrlLambda = new IndexFunction(this, 'getS3SignedUrlLambda', {
@@ -132,6 +148,13 @@ export class S3UploadPresignedUrlApi extends Construct {
       if (!props?.existingUserPoolObj) {
         this.userPool = new UserPool(this, 'CognitoUserPool', {
           selfSignUpEnabled: true,
+          passwordPolicy: {
+            minLength: 8,
+            requireLowercase: true,
+            requireUppercase: true,
+            requireSymbols: true,
+            requireDigits: true,
+          }
         });
         this.userPoolClient = new UserPoolClient(this, 'CognitoUserPoolClient', {
           userPool: this.userPool,
