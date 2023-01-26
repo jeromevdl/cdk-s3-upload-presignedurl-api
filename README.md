@@ -53,7 +53,7 @@ $ pip install cdk-s3-upload-presignedurl-api
 #### Usage
 
 ```py
-import aws_cdk.core as cdk
+import aws_cdk as cdk
 from cdk_s3_upload_presignedurl_api import S3UploadPresignedUrlApi
 
 app = cdk.App()
